@@ -18,3 +18,5 @@ I am NEW to GITHUB
 It does NOT have a GUI.
 You are able to interract with it through IDLE or Command Line.
 Your files are saved in the directory where the program is saved in a .txt format. 
+
+Lastly, if there is anything wrong with my code or if you would like to give me feedback then please leave a comment.
