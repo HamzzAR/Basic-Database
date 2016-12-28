@@ -3,13 +3,18 @@ import glob
 import os
 def main():
   print()
-  option2 = int(input('1. Add\n2. Search\n3. Delete\n4. Exit\n(1/2/3): '))
+  option2 = int(input('1. Add\n2. Search\n3. Delete\n4. Add Details\n5. Exit\n(1/2/3): '))
   if option2 == 1:
     add_file()
   elif option2 == 2:
     search_file()
   elif option2 == 3:
     delete()
+  elif option2 == 4:
+    print('Extracting Data...')
+    sleep(1.5)
+    print('Done!')
+    add_details()
   else:
     print('Exiting...')
     sleep(2)
@@ -23,6 +28,25 @@ def check_dir(p_name):
       reply = False
   return reply
 
+def add_details():
+  name = str(input('Enter Name: '))
+  name = name.lower()
+  check = check_dir(name)
+  if check == False:
+    names = open('{}.txt'.format(name), 'a')
+    title = 'None'
+    while title != '':
+      title = str(input('Enter a title (Or Press ENTER to Exit): '))
+      if title != '':
+        detail = str(input('Enter Details: '))
+        names.write(title + ' : ' + str(detail) + '\n')
+    print('Please Wait...')
+    sleep(1.5)
+    print('Customers Saved')
+    sleep(2)
+    names.close()
+    main()
+    
 def delete():
   name = input('Enter name: ')
   name.lower()
