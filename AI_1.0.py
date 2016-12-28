@@ -3,7 +3,7 @@ import glob
 import os
 def main():
   print()
-  option2 = int(input('1. Add\n2. Search\n3. Delete\n4. Add Details\n5. Exit\n(1/2/3): '))
+  option2 = int(input('1. Add\n2. Search\n3. Delete\n4. Add Details\n5. Ask Questions\n6. Exit\n(1/2/3): '))
   if option2 == 1:
     add_file()
   elif option2 == 2:
@@ -15,6 +15,8 @@ def main():
     sleep(1.5)
     print('Done!')
     add_details()
+  elif option2 == 5:
+    ask_Q()
   else:
     print('Exiting...')
     sleep(2)
@@ -28,6 +30,33 @@ def check_dir(p_name):
       reply = False
   return reply
 
+def ask_Q():
+  q = input('Enter Query: ')
+  q = q.lower()
+  if q:
+    q = q.replace('?', '')
+  print('Extracting Data...')
+  sleep(1)
+  print('Please Wait...')
+  sleep(0.6)
+  listt = q.split()
+  count = 0
+  filename = glob.glob('*.txt')
+  for line in filename:
+    if filename[count][:-4] in q:
+      name = open('{}'.format(filename[count]), 'rt')
+      lines = name.readlines()
+      for line in lines:
+        tem_line = line.lower()
+        tem_line = tem_line.split()
+        for i in listt:
+          if i in tem_line:
+            print(line)
+            sleep(1)
+            break
+    count+=1
+  main()
+  
 def add_details():
   name = str(input('Enter Name: '))
   name = name.lower()
