@@ -1,26 +1,6 @@
 from time import sleep
 import glob
 import os
-def main():
-  print()
-  option2 = int(input('1. Add\n2. Search\n3. Delete\n4. Add Details\n5. Ask Questions\n6. Exit\n(1/2/3): '))
-  if option2 == 1:
-    add_file()
-  elif option2 == 2:
-    search_file()
-  elif option2 == 3:
-    delete()
-  elif option2 == 4:
-    print('Extracting Data...')
-    sleep(1.5)
-    print('Done!')
-    add_details()
-  elif option2 == 5:
-    ask_Q()
-  else:
-    print('Exiting...')
-    sleep(2)
-    print('GoodBye!')
 
 def check_dir(p_name):
   filename = glob.glob('*.txt')
@@ -55,7 +35,6 @@ def ask_Q():
             sleep(1)
             break
     count+=1
-  main()
   
 def add_details():
   name = str(input('Enter Name: '))
@@ -74,7 +53,6 @@ def add_details():
     print('Customers Saved')
     sleep(2)
     names.close()
-    main()
     
 def delete():
   name = input('Enter name: ')
@@ -92,11 +70,9 @@ def delete():
     else:
       print('Not Found')
       sleep(1)
-      main()
   else:
     print('Cancelled')
     sleep(1)
-  main()
   
 def add_file():
   name = str(input('Enter Name: '))
@@ -120,11 +96,9 @@ def add_file():
     print('Customers Saved')
     sleep(2)
     names.close()
-    main()
   else:
     print(name.upper(),'already exist')
     sleep(1)
-    main()
   
 def search_file():
   name = str(input('Enter name: '))
@@ -138,7 +112,6 @@ def search_file():
     except:
       print('0 Customers Found! ')
       sleep(1)
-      main()
     lines = names.readlines()
     print('Found: 1')
     sleep(1)
@@ -146,9 +119,6 @@ def search_file():
     for x in lines:
       print(x, end='')
     sleep(2)
-    main()
   else:
     print(name.upper(),'does NOT exist')
     sleep(1)
-    main()
-main()
